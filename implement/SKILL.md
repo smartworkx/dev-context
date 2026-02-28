@@ -5,12 +5,15 @@ description: >-
   TRIGGER when: user asks to implement, build, or code a feature, or to create a PR from an issue.
   Examples: "implement issue 42", "build the export feature", "implement and open a PR".
   DO NOT TRIGGER when: user wants to create an issue, write specs, or just commit changes.
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, WebFetch, WebSearch
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, WebFetch, WebSearch, Skill
 ---
 
-Implement a feature by reading all prepared context, then propose to commit, push, and create a PR.
+Implement a feature by reading all prepared context, then commit, push, and create a PR.
 
-> **Sub-agent worktree:** When running inside a sub-agent with `isolation: "worktree"`, the branch is already checked out — skip branch creation and work in the current directory.
+## Branch Setup
+
+- **In a worktree** (sibling directory with a feature branch already checked out) → work in the current directory
+- **On main** → invoke the `feature-branch` skill (via `Skill` tool) with the issue number as argument, then `cd` into the created worktree before continuing
 
 ## Steps
 
@@ -30,12 +33,7 @@ Implement a feature by reading all prepared context, then propose to commit, pus
    - Respect architectural decisions from ADRs
    - Match existing code style and patterns
 
-4. When implementation is complete, propose to the user:
-   - Stage and commit the changes
-   - Push the branch
-   - Create a PR linking the issue
-
-5. If the user agrees:
+4. When implementation is complete — commit, push, and create a PR:
    - Stage relevant files — prefer `git add <file>...` over `git add -A`
    - Do NOT stage files that look like secrets (`.env`, credentials, tokens)
    - Extract the issue number from the current branch name (e.g. `42-add-export` → `#42`)
@@ -48,7 +46,5 @@ Implement a feature by reading all prepared context, then propose to commit, pus
 
 ## Rules
 
-- Always ask before committing, pushing, or creating a PR
-- Do NOT push or create a PR without explicit user approval
 - Follow commit message convention: `#<number> <imperative summary>`
 - If there are no changes to commit, tell the user
