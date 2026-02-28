@@ -20,14 +20,17 @@ Create or update a GitHub issue. **Do NOT implement — only create/update the i
 1. Get feature/bug/task description from user (argument or ask)
 2. Explore codebase for context
 3. Ask 2-4 clarifying questions via `AskUserQuestion` — keep it focused
-4. Create with `gh issue create`
+4. Draft the full issue (title + body) and present it to the user as a preview
+5. Ask the user if it looks good or what to change — repeat 4-5 until approved
+6. Only after explicit approval: create with `gh issue create`
 
 ## Update
 
 1. Fetch with `gh issue view <number>`
 2. Clarify what to change if not obvious
-3. Apply with `gh issue edit` or `gh issue comment` (comment for additions, edit for rewrites)
-4. Summarize what changed before applying
+3. Draft the updated issue and present the full result to the user as a preview
+4. Ask the user if it looks good or what to change — repeat 3-4 until approved
+5. Only after explicit approval: apply with `gh issue edit` or `gh issue comment` (comment for additions, edit for rewrites)
 
 ## Issue Body Structure
 
@@ -55,6 +58,7 @@ Omit sections that aren't relevant. Keep it tight.
 
 ## Rules
 
+- **Never call `gh issue create` or `gh issue edit` without explicit user approval of the previewed content**
 - Title: imperative, under 70 chars
 - Add labels if they exist (`gh label list`)
 - Be specific: file paths, concrete criteria, no vague language
