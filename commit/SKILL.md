@@ -1,6 +1,10 @@
 ---
 name: commit
-description: Stage and commit changes with a well-crafted commit message
+description: >-
+  Stage and commit changes with a well-crafted commit message.
+  TRIGGER when: user asks to commit, stage, or save changes to git.
+  Examples: "commit this", "commit the changes", "stage and commit".
+  DO NOT TRIGGER when: user asks to push, create a PR, or amend a previous commit.
 allowed-tools: Bash, Read, Glob, Grep
 ---
 

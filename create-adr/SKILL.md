@@ -1,6 +1,10 @@
 ---
 name: create-adr
-description: Create a new Architecture Decision Record in doc/adr/
+description: >-
+  Create a new Architecture Decision Record in doc/adr/.
+  TRIGGER when: user asks to create or record an architectural decision, or mentions ADR.
+  Examples: "create an ADR for...", "record the decision to use PostgreSQL", "add an ADR".
+  DO NOT TRIGGER when: user wants to read/review existing ADRs or write general documentation.
 allowed-tools: Bash, Read, Write, Glob, AskUserQuestion
 ---
 

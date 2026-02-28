@@ -1,6 +1,10 @@
 ---
 name: create-spec
-description: Write BDD test scenarios in Gherkin for a feature
+description: >-
+  Write BDD test scenarios in Gherkin for a feature.
+  TRIGGER when: user asks to write, create, or add specs, scenarios, or Gherkin features.
+  Examples: "write specs for...", "create a feature file", "add BDD scenarios for user export".
+  DO NOT TRIGGER when: user wants to run tests, write unit tests, or implement a feature.
 allowed-tools: Bash, Read, Write, Glob, Grep, AskUserQuestion
 ---
 

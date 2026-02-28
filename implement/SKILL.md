@@ -1,6 +1,10 @@
 ---
 name: implement
-description: Implement a feature from issue, specs, and docs, then propose a PR
+description: >-
+  Implement a feature from issue, specs, and docs, then propose a PR.
+  TRIGGER when: user asks to implement, build, or code a feature, or to create a PR from an issue.
+  Examples: "implement issue 42", "build the export feature", "implement and open a PR".
+  DO NOT TRIGGER when: user wants to create an issue, write specs, or just commit changes.
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, WebFetch, WebSearch
 ---
 

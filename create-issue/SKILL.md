@@ -1,6 +1,10 @@
 ---
 name: create-issue
-description: Create or update a GitHub issue with clarifying questions
+description: >-
+  Create or update a GitHub issue with clarifying questions.
+  TRIGGER when: user asks to create, update, edit, or refine a GitHub issue.
+  Examples: "create an issue for...", "update issue 42", "improve the description on issue 137".
+  DO NOT TRIGGER when: user just wants to view/list issues, comment on a PR, or implement a feature.
 allowed-tools: Bash, Read, Glob, Grep, WebSearch, AskUserQuestion
 ---
 

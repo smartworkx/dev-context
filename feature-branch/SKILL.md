@@ -1,6 +1,10 @@
 ---
 name: feature-branch
-description: Create a feature branch from a GitHub issue
+description: >-
+  Create a feature branch from a GitHub issue.
+  TRIGGER when: user asks to create a branch, start working on an issue, or begin a feature.
+  Examples: "create a branch for issue 42", "start working on the export feature", "branch off for issue 15".
+  DO NOT TRIGGER when: user just wants to switch branches, view issues, or implement code.
 allowed-tools: Bash, Read, Glob, Grep, AskUserQuestion
 ---
 

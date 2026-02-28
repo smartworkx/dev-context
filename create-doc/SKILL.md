@@ -1,6 +1,10 @@
 ---
 name: create-doc
-description: Create documentation following docs-as-code conventions
+description: >-
+  Create documentation following docs-as-code conventions.
+  TRIGGER when: user asks to create, write, or draft documentation, diagrams, or technical docs.
+  Examples: "create a doc for...", "write architecture documentation", "add a C4 diagram", "document the domain model".
+  DO NOT TRIGGER when: user wants an ADR (use create-adr), a spec (use create-spec), or just wants to read existing docs.
 allowed-tools: Bash, Read, Write, Glob, Grep, AskUserQuestion
 ---
 
