@@ -1,14 +1,14 @@
 ---
 name: feature-branch
 description: >-
-  Create a feature branch from a GitHub issue.
+  Create a feature branch in a git worktree from a GitHub issue.
   TRIGGER when: user asks to create a branch, start working on an issue, or begin a feature.
   Examples: "create a branch for issue 42", "start working on the export feature", "branch off for issue 15".
   DO NOT TRIGGER when: user just wants to switch branches, view issues, or implement code.
 allowed-tools: Bash, Read, Glob, Grep, AskUserQuestion
 ---
 
-Create a feature branch from a GitHub issue.
+Create a feature branch in a new git worktree, as a sibling directory of the current project.
 
 ## Steps
 
@@ -24,9 +24,12 @@ Create a feature branch from a GitHub issue.
 3. Ensure `main` is up to date:
    - `git fetch origin main`
 
-4. Create and check out the branch:
-   - `git checkout -b <branch-name> origin/main`
+4. Create a worktree as a sibling of the current project directory:
+   - `git worktree add ../<branch-name> -b <branch-name> origin/main`
+   - This creates `../<branch-name>/` alongside the current project directory
 
 5. Confirm to the user:
    - Show the branch name
+   - Show the worktree path
    - Summarize what the issue is about
+   - Remind them to `cd ../<branch-name>` to start working
