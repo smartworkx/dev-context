@@ -1,10 +1,12 @@
 ---
 name: implement
 description: Implement a feature from issue, specs, and docs, then propose a PR
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Agent, WebFetch, WebSearch
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, WebFetch, WebSearch
 ---
 
 Implement a feature by reading all prepared context, then propose to commit, push, and create a PR.
+
+> **Sub-agent worktree:** When running inside a sub-agent with `isolation: "worktree"`, the branch is already checked out — skip branch creation and work in the current directory.
 
 ## Steps
 

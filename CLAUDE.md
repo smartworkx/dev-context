@@ -26,6 +26,21 @@ create-issue → feature-branch → create-adr → create-doc → create-spec �
 
 **Issue numbers are transient workflow artifacts.** Branches and commits may reference them, but standing documentation (specs, ADRs, docs) must NOT embed issue numbers. The issue should reference the docs, not the other way around.
 
+### Sub-agent Workflow
+
+The master session stays on `main` and orchestrates work by spawning sub-agents with `isolation: "worktree"` for parallel implementation:
+
+```
+Master (main) ──┬── Sub-agent (worktree) → feature-branch → implement → PR
+                ├── Sub-agent (worktree) → feature-branch → implement → PR
+                └── Sub-agent (worktree) → feature-branch → implement → PR
+```
+
+- The master session creates issues and coordinates, but does not switch branches
+- Each sub-agent gets an isolated worktree — Claude's `isolation: "worktree"` handles the checkout
+- Skills are loaded via the `skills:` frontmatter in the sub-agent's `Agent` tool call
+- The `feature-branch` skill creates the branch; the `implement` skill does the work and opens a PR
+
 Skills are installed into consumer projects via:
 ```bash
 npx skills add smartworkx/dev-context
