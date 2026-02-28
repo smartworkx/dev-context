@@ -17,7 +17,6 @@ Create a new Architecture Decision Record (ADR) in `doc/adr/` using the Nygard f
 # [Title]
 
 **Status:** proposed
-**Date:** [today's date in YYYY-MM-DD format]
 
 ## Context
 
