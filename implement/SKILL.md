@@ -5,7 +5,7 @@ description: >-
   TRIGGER when: user asks to implement, build, or code a feature, or to create a PR from an issue.
   Examples: "implement issue 42", "build the export feature", "implement and open a PR".
   DO NOT TRIGGER when: user wants to create an issue, write specs, or just commit changes.
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, WebFetch, WebSearch
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, WebFetch, WebSearch
 ---
 
 Implement a feature by reading all prepared context, then propose to commit, push, and create a PR.

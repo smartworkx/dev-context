@@ -17,7 +17,7 @@ create-issue → feature-branch → create-adr → create-doc → create-spec �
 | Skill | Purpose |
 |-------|---------|
 | `create-issue` | Define work as a GitHub issue |
-| `feature-branch` | Create a branch from an issue |
+| `feature-branch` | Create a feature branch worktree |
 | `create-adr` | Record architectural decisions |
 | `create-doc` | Write documentation and diagrams |
 | `create-spec` | Write BDD scenarios in Gherkin |
@@ -28,18 +28,25 @@ create-issue → feature-branch → create-adr → create-doc → create-spec �
 
 ### Sub-agent Workflow
 
-The master session stays on `main` and orchestrates work by spawning sub-agents with `isolation: "worktree"` for parallel implementation:
+The session lives in the project's `main/` directory and orchestrates work by dispatching sub-agents into pre-created worktrees for parallel implementation:
 
 ```
-Master (main) ──┬── Sub-agent (worktree) → feature-branch → implement → PR
-                ├── Sub-agent (worktree) → feature-branch → implement → PR
-                └── Sub-agent (worktree) → feature-branch → implement → PR
+my-app/
+├── main/                ← main branch, Claude session here
+├── add-user-export/     ← worktree (feature branch)
+└── fix-search/          ← worktree (feature branch)
 ```
 
-- The master session creates issues and coordinates, but does not switch branches
-- Each sub-agent gets an isolated worktree — Claude's `isolation: "worktree"` handles the checkout
-- Skills are loaded via the `skills:` frontmatter in the sub-agent's `Agent` tool call
-- The `feature-branch` skill creates the branch; the `implement` skill does the work and opens a PR
+```
+Session (main/) ──┬── feature-branch "add-user-export" → Sub-agent → implement → PR
+                  ├── feature-branch "fix-search"       → Sub-agent → implement → PR
+                  └── ...
+```
+
+- The session stays on `main` and never switches branches
+- Worktrees are created with the `feature-branch` skill — the user provides the branch name
+- Sub-agents are dispatched into worktrees via the `Agent` tool to implement and open PRs
+- PRs are created from worktrees with `gh pr create`; merging happens on GitHub, never locally
 
 Skills are installed into consumer projects via:
 ```bash
