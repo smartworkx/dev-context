@@ -45,6 +45,7 @@ Feature: <Feature Title>
 Based on [el-feo/ai-context/cucumber-gherkin](https://skills.sh/el-feo/ai-context/cucumber-gherkin) conventions.
 
 - **Declarative over imperative** — focus on *what* not *how* (say "the user is logged in", not "the user enters credentials and clicks login")
+- **No technical implementation details** — specs describe behavior from the user's perspective, not the technology behind it. Say "a chat widget is visible", not "the Matrix/Element widget is embedded". Technology choices belong in ADRs, not specs.
 - Keep scenarios concise — 3-5 steps
 - Use domain language stakeholders understand
 - One behavior per scenario

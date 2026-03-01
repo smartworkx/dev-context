@@ -22,11 +22,12 @@ Implement a feature by reading all prepared context, then commit, push, and crea
    - A **description** → search with `gh issue list --search "<description>"` to find the matching issue
    - Nothing → ask the user what to implement
 
-2. Read all available context:
-   - Specs in `doc/spec/` related to the feature
-   - ADRs in `doc/adr/` related to the feature
-   - Docs in `doc/` related to the feature
-   - Existing code and tests in the affected areas
+2. Read all available context — start with what's already on the branch:
+   - Run `git log main..HEAD --oneline` to see commits on the feature branch (design work, specs, ADRs may already be committed)
+   - Read any specs in `doc/spec/` related to the feature
+   - Read any ADRs in `doc/adr/` related to the feature
+   - Read any docs in `doc/` related to the feature
+   - Review existing code and tests in the affected areas
 
 3. Implement the feature based on the gathered context:
    - Follow specs as acceptance criteria
