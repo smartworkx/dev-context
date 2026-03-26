@@ -10,6 +10,11 @@ allowed-tools: Bash, Read, AskUserQuestion
 
 Create a feature branch in a new git worktree, as a sibling directory of the current project.
 
+## Rules
+
+- **Never use `git checkout -b` or `git switch -c` in the main working directory.** All feature branches must be created as worktrees using `git worktree add`. The main directory must always stay on the main branch.
+- Never generate a branch name — always take it from the user or the issue number.
+
 ## Steps
 
 1. Take the branch name from the argument. If none provided, ask the user — never generate a name.
